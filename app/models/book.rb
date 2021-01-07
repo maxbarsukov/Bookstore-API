@@ -1,3 +1,3 @@
 class Book < ApplicationRecord
-  validates :title, :body, presence: true
+  validates :title, :author, presence: true, length: { minimum: 1 }
 end

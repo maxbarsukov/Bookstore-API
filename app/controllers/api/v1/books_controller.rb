@@ -16,7 +16,7 @@ module Api
       def create
         book = Book.new(book_params)
         if book.save
-          render json: { status: 'SUCCESS', message: 'Saved book', data: book }, status: :ok
+          render json: { status: 'SUCCESS', message: 'Saved book', data: book }, status: :created
         else
           render json: { status: 'ERROR',
                          message: 'Book not saved',
