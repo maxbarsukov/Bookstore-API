@@ -29,6 +29,11 @@ module Api
         book = Book.find(params[:id])
         book.destroy
         render json: { status: 'SUCCESS', message: 'Deleted book', data: book }, status: :ok
+      rescue ActiveRecord::RecordNotDestroyed
+        render json: { status: 'ERROR',
+                       message: 'Book not destroyed',
+                       data: book.errors },
+               status: :ok
       end
 
       def update
