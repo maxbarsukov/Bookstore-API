@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  resources :books, only: :index
+  namespace 'api' do
+    namespace 'v1' do
+      resources :books, only: :index
+    end
+  end
 end
