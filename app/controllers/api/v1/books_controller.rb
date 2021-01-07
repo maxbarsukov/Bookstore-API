@@ -33,7 +33,7 @@ module Api
         render json: { status: 'ERROR',
                        message: 'Book not destroyed',
                        data: book.errors },
-               status: :ok
+               status: :unprocessable_entity
       end
 
       def update
