@@ -1,3 +1,3 @@
 # Bookstore API
 
-Simple app for learn Rails API.
+Simple app for learning Rails API.
