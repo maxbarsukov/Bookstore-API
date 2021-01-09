@@ -11,7 +11,7 @@ describe 'Books API', type: :request do
       get '/api/v1/books'
 
       expect(response).to have_http_status(:success)
-      expect(JSON.parse(response.body).size).to eq(2)
+      expect(JSON.parse(response.body)['data'].size).to eq(2)
     end
   end
 
@@ -27,9 +27,8 @@ describe 'Books API', type: :request do
 
   describe 'DELETE  /books/:id' do
     it 'deletes a book' do
-      FactoryBot.create(:book, title: '1984', author: 'George Orwell')
-
-      delete '/api/v1/books/1'
+      book = FactoryBot.create(:book, title: '1984', author: 'George Orwell')
+      delete "/api/v1/books/#{book.id}"
 
       expect(response).to have_http_status(:ok)
     end
