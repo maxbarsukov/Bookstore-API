@@ -26,8 +26,9 @@ describe 'Books API', type: :request do
   end
 
   describe 'DELETE  /books/:id' do
+    let(:book) { FactoryBot.create(:book, title: '1984', author: 'George Orwell') }
+
     it 'deletes a book' do
-      book = FactoryBot.create(:book, title: '1984', author: 'George Orwell')
       delete "/api/v1/books/#{book.id}"
 
       expect(response).to have_http_status(:ok)
