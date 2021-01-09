@@ -5,12 +5,12 @@ default: &default
 
 development:
   <<: *default
-  database: test_api_development
+  database: bookstore_api_development
 
 test:
   <<: *default
-  database: test_api_test
+  database: bookstore_api_test
 
 production:
   <<: *default
-  database: test_api_production
+  database: bookstore_api_production
