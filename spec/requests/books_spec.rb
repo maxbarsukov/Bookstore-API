@@ -26,10 +26,12 @@ describe 'Books API', type: :request do
   end
 
   describe 'DELETE  /books/:id' do
-    let(:book) { FactoryBot.create(:book, title: '1984', author: 'George Orwell') }
+    let!(:book) { FactoryBot.create(:book, title: '1984', author: 'George Orwell') }
 
     it 'deletes a book' do
-      delete "/api/v1/books/#{book.id}"
+      expect do
+        delete "/api/v1/books/#{book.id}"
+      end.to change { Book.count }.from(1).to(0)
 
       expect(response).to have_http_status(:ok)
     end
