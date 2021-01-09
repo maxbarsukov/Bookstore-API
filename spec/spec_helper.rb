@@ -21,10 +21,6 @@ RSpec.configure do |config|
     FactoryBot.reload
   end
 
-  config.after :all do
-    ActiveRecord::Base.subclasses.each(&:delete_all)
-  end
-
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

@@ -14,7 +14,8 @@ module Api
       end
 
       def create
-        book = Book.new(book_params)
+        author = Author.find_or_create_by(author_params)
+        book = Book.new(book_params.merge(author_id: author.id))
         if book.save
           render json: { status: 'SUCCESS', message: 'Saved book', data: book }, status: :created
         else
@@ -49,6 +50,10 @@ module Api
       end
 
       private
+
+      def author_params
+        params.permit(:first_name, :last_name)
+      end
 
       def book_params
         params.permit(:title, :author)
